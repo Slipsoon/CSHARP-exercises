@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbCommand.cs" />
     <Compile Include="DbConnection.cs" />
     <Compile Include="Options.cs" />
     <Compile Include="OracleConnection.cs" />

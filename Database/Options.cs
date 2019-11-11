@@ -15,6 +15,16 @@ namespace Database
             Console.WriteLine("connect - to open connection to current database");
             Console.WriteLine("disconnect - to close connection to the database");
             Console.WriteLine("instance - to go to database instance choice.");
+            Console.WriteLine("command - to manipulate database");
+        }
+
+        public static void CommandOptions()
+        {
+            Console.WriteLine("Command options: \n");
+            Console.WriteLine("insert - to add some data.");
+            Console.WriteLine("select - to display some data.");
+            Console.WriteLine("delete - to remove some rows.");
+            Console.WriteLine("instance - to go to database instance choice.");
         }
 
         public static void InstanceOptions()
@@ -28,11 +38,11 @@ namespace Database
 
         public static string InstanceLeave()
         {
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
             Console.Write(".");
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
             Console.Write(".");
-            System.Threading.Thread.Sleep(500);
+            System.Threading.Thread.Sleep(1000);
 
             return "instance-leave";
         }

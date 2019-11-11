@@ -18,7 +18,7 @@ namespace Database
 
         public override void OpenConnection()
         {
-            Console.WriteLine("Connecting... ");
+            Console.WriteLine("\nConnecting... ");
 
             if (_connectionStatus)
             {
@@ -36,7 +36,7 @@ namespace Database
             if (_connectionStatus)
             {
                 _connectionStatus = !_connectionStatus;
-                Console.WriteLine("Disconnecting...\n You have been disconnected from database!");
+                Console.WriteLine("Disconnecting...\n You have been disconnected from database!\n");
             }
             else
             {
