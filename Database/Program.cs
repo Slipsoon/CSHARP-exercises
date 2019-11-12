@@ -10,8 +10,8 @@ namespace Database
     {
         static void Main(string[] args)
         {
-            var sqlDB = new SqlConnection("initialConnection");
             var oracleDB = new OracleConnection("initialConnection");
+            var sqlDB = new SqlConnection("initialConnection");
             var dbCommand = new DbCommand(null);
             string sqlConnectionString = null;
             string oracleConnectionString = null;
@@ -34,6 +34,7 @@ namespace Database
                     case "sql":
                         Console.Clear();
                         Console.WriteLine("Connected to sql instance!");
+
                         dbCommand = new DbCommand(sqlDB);
                         Options.ShowOptions();
                         input = Options.UserChoice();
@@ -73,6 +74,7 @@ namespace Database
                                 case "instance":
                                     sqlDB.CloseConnection();
                                     Console.Write("Disconnecting {0} instance.",instance);
+                                    instance = null;
                                     input = Options.InstanceLeave();
                                     break;
 
@@ -132,7 +134,7 @@ namespace Database
                             case "instance":
                                 oracleDB.CloseConnection();
                                 Console.Write("Disconnecting {0} instance.",instance);
-
+                                instance = null;
                                 input = Options.InstanceLeave();
                                 break;
 
@@ -158,27 +160,31 @@ namespace Database
                         Console.Write("\nCommand option: ");
                         input = Console.ReadLine();
 
-                        while (input != "instance")
+                        while (input != "instance-leave")
                         {
                             switch (input)
                             {
                                 case "select":
-                                    dbCommand.Execute("\nSelecting data from database... OK!");
+                                    dbCommand.Command = "\nSelecting data from database... OK!";
+                                    dbCommand.Execute();
                                     input = Options.UserChoice();
                                     break;
 
                                 case "delete":
-                                    dbCommand.Execute("\nDeleting data from database... OK!");
+                                    dbCommand.Command = "\nDeleting data from database... OK!";
+                                    dbCommand.Execute();
                                     input = Options.UserChoice();
                                     break;
 
                                 case "insert":
-                                    dbCommand.Execute("\nInserting some data to database... OK!");
+                                    dbCommand.Command = "\nInserting some data to database... OK!";
+                                    dbCommand.Execute();
                                     input = Options.UserChoice();
                                     break;
 
                                 case "instance":
-                                    instance = null; // need to fix leave command instance
+                                    instance = null;
+                                    input = "instance-leave";
                                     break;
 
                                 default:

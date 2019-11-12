@@ -8,18 +8,19 @@ namespace Database
 {
     public class DbCommand
     {
-        public DbConnection DbConnection { get; set; }
+        public string Command { get; set; }
+        private DbConnection _dbConnection;
 
         public DbCommand(DbConnection dbConnection)
         {
-            DbConnection = dbConnection;
+            _dbConnection = dbConnection;
         }
 
-        public void Execute(string command)
+        public void Execute()
         {
-            DbConnection.OpenConnection();
-            Console.WriteLine(command);
-            DbConnection.CloseConnection();
+            _dbConnection.OpenConnection();
+            Console.WriteLine(Command);
+            _dbConnection.CloseConnection();
         }
     }
 }

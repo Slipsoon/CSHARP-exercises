@@ -18,7 +18,7 @@ namespace Database
 
             public override void OpenConnection()
             {
-                Console.WriteLine("Connecting... ");
+                Console.WriteLine("Connecting to oracle database... ");
 
                 if (_connectionStatus)
                 {
